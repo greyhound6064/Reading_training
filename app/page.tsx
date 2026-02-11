@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import PassageList from "@/components/PassageList";
 import SearchBar from "@/components/SearchBar";
 
@@ -8,9 +9,22 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-6">
         <h1 className="text-2xl font-bold mb-6">독해력 훈련</h1>
         
-        <SearchBar />
+        <Suspense fallback={<div className="mb-6 h-24 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse" />}>
+          <SearchBar />
+        </Suspense>
         
-        <PassageList />
+        <Suspense fallback={
+          <div className="space-y-4">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="h-32 bg-gray-200 dark:bg-gray-700 rounded-lg animate-pulse"
+              />
+            ))}
+          </div>
+        }>
+          <PassageList />
+        </Suspense>
         
         {/* 새 지문 추가 버튼 (하단 고정) */}
         <Link
