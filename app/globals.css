@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fafafa;
+  --foreground: #1a1a1a;
+}
+
+.dark {
+  --background: #1e1e1e;
+  --foreground: #e0e0e0;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-noto-sans-kr), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* 독해 최적화 스타일 */
+.reader-content {
+  font-family: var(--font-noto-sans-kr), sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.reader-content p {
+  margin-bottom: 1.5em;
+}
+
+@media (min-width: 768px) {
+  .reader-content {
+    font-size: 18px;
+    padding: 40px;
+  }
+}
+
+/* 스크롤 부드럽게 */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 터치 영역 최적화 */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+}
